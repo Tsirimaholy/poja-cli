@@ -1,6 +1,6 @@
-from git import Repo, Git
-import shutil
 from tempfile import mkdtemp
+
+from git import Repo, Git, rmtree
 
 
 def checkout(url, tag, no_git=True):
@@ -10,6 +10,6 @@ def checkout(url, tag, no_git=True):
     repo = Git(temp_dir)
     repo.checkout(tag)
     if no_git:
-        shutil.rmtree(temp_dir + "/.git")
+        rmtree(temp_dir + "/.git")
 
     return temp_dir
